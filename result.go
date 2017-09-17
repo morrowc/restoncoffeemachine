@@ -52,6 +52,7 @@ func main() {
 }
 
 func handle(w http.ResponseWriter, r *http.Request) {
+	defer func(t time.Time) { fmt.Fprintf(w, "<address>Generated page in %s</address>", time.Since(t)) }(time.Now())
 	// var result bytes.Buffer
 	if r.URL.Path != "/" {
 		http.NotFound(w, r)
