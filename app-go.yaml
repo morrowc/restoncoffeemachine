@@ -2,7 +2,7 @@
 runtime: go
 api_version: go1
 #env: flex
-version: 1
+version: 3
 
 handlers:
 - url: /favicon\.ico
