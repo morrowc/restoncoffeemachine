@@ -57,6 +57,8 @@ seq = ("""
 class MainPage(webapp.RequestHandler):
   def get(self):
     
+    req = webapp.get_request()
+    scheme = req.scheme
     spacer = "<br>\n" * 10
     top_ad = """<script type="text/javascript"><!--
     google_ad_client = "ca-pub-4109530843345987";
@@ -67,9 +69,9 @@ class MainPage(webapp.RequestHandler):
     //-->
     </script>
     <script type="text/javascript"
-    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+    src="%s://pagead2.googlesyndication.com/pagead/show_ads.js">
     </script>
-    """
+    """ % scheme
     bot_ad = """<script type="text/javascript"><!--
     google_ad_client = "ca-pub-4109530843345987";
     /* bottom-coffee */
@@ -79,8 +81,8 @@ class MainPage(webapp.RequestHandler):
     //-->
     </script>
     <script type="text/javascript"
-    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-    </script>"""
+    src="%s://pagead2.googlesyndication.com/pagead/show_ads.js">
+    </script>""" % scheme
 
     self.response.out.write('<html>')
 
