@@ -1,6 +1,6 @@
 # Use the go runtime for restoncoffeemachine.
 runtime: go
-api_version: go1.9
+api_version: go1
 #env: flex
 version: 4
 
