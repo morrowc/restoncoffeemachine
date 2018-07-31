@@ -1,8 +1,8 @@
 # Use the go runtime for restoncoffeemachine.
 runtime: go
-api_version: go1
+api_version: go1.9
 #env: flex
-version: 3
+version: 4
 
 handlers:
 - url: /favicon\.ico
