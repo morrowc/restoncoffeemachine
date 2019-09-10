@@ -5,10 +5,9 @@ import (
 	"log"
 	"math/rand"
 	"net/http"
+	"os"
 	"text/template"
 	"time"
-
-	"google.golang.org/appengine"
 )
 
 type results []struct {
@@ -42,13 +41,18 @@ var (
 )
 
 func main() {
-	// Start the appengine main.
+	// Prepare port data from ENV.
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8777"
+		log.Printf("Default port: %v used", port)
+	}
+
 	http.HandleFunc("/", handle)
 	http.HandleFunc("/_ah/health", healthCheckHandler)
 
-	appengine.Main()
-	log.Print("Listening on port 8777")
-	log.Fatal(http.ListenAndServe(":8777", nil))
+	log.Printf("Listening on port: %v ", port)
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
 }
 
 func handle(w http.ResponseWriter, r *http.Request) {
