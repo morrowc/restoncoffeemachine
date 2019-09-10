@@ -11,4 +11,4 @@ handlers:
   mime_type: image/jpeg
   expiration: "30d"
 - url: /.*
-  script: _go_app
+  script: auto
