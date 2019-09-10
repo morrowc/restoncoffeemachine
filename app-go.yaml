@@ -1,5 +1,5 @@
 # Use the go runtime for restoncoffeemachine.
-runtime: go
+runtime: go112
 
 handlers:
 - url: /favicon\.ico
