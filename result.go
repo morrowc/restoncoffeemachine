@@ -40,21 +40,6 @@ var (
 	randPool = rand.New(rand.NewSource(time.Now().UnixNano()))
 )
 
-func main() {
-	// Prepare port data from ENV.
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8777"
-		log.Printf("Default port: %v used", port)
-	}
-
-	http.HandleFunc("/", handle)
-	http.HandleFunc("/_ah/health", healthCheckHandler)
-
-	log.Printf("Listening on port: %v ", port)
-	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
-}
-
 func handle(w http.ResponseWriter, r *http.Request) {
 	defer func(t time.Time) { fmt.Fprintf(w, "<address>Generated page in %s thnx!</address>", time.Since(t)) }(time.Now())
 	// var result bytes.Buffer
@@ -72,4 +57,19 @@ func handle(w http.ResponseWriter, r *http.Request) {
 
 func healthCheckHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "ok")
+}
+
+func main() {
+	// Prepare port data from ENV.
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8777"
+		log.Printf("Default port: %v used", port)
+	}
+
+	http.HandleFunc("/", handle)
+	http.HandleFunc("/_ah/health", healthCheckHandler)
+
+	log.Printf("Listening on port: %v ", port)
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
 }
