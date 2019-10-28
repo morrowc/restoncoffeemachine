@@ -12,3 +12,8 @@ handlers:
   expiration: "30d"
 - url: /.*
   script: auto
+- url /ads.txt
+  static_files: ads.txt
+  upload: ads.txt
+  mime_type: text/text
+  expiration: "30d"
