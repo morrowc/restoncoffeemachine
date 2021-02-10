@@ -5,15 +5,19 @@ handlers:
 - url: /favicon\.ico
   static_files: img/favicon.ico
   upload: img/favicon\.ico
+  secure: always
 - url: /img/(.*)
   static_files: img/\1
   upload: img/(.*)
   mime_type: image/jpeg
   expiration: "30d"
+  secure: always
 - url: /ads.txt
   static_files: ads.txt
   upload: ads.txt
   mime_type: text/text
   expiration: "30d"
+  secure: always
 - url: /.*
   script: auto
+  secure: always
